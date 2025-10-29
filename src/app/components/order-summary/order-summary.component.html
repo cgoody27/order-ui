@@ -1,0 +1,22 @@
+<div>
+    <label>Order ID:
+        <input type="number" [(ngModel)]="orderId" />
+        <button (click)="fetchOrder()">Fetch</button>
+    </label>
+</div>
+
+<div *ngIf="error">{{ error }}</div>
+
+<div *ngIf="order">
+    <h3>Order Summary</h3>
+    <p><strong>Customer:</strong> {{ order.customerName }}</p>
+    <p><strong>Total:</strong> ${{ order.totalAmount }}</p>
+    <p><strong>Status:</strong> {{ order.status }}</p>
+
+    <h4>Status History</h4>
+    <ul>
+        <li *ngFor="let h of history">
+            {{ h.status }} - {{ h.timestamp | date:'short' }}
+        </li>
+    </ul>
+</div>
